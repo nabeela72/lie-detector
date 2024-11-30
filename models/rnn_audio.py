@@ -82,6 +82,7 @@ def train(model, loss_fn, optimizer, num_epochs = 1, logger = None, hold_out = -
       model.train()
       loss_total = 0
       for t, (x, y, _) in enumerate(model.config.train_loader):
+          print(f'Starting batch #{t})
           x_var = Variable(x)
           y_var = Variable(y.type(model.config.dtype).long())
           scores = model(x_var) 
