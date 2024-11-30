@@ -88,10 +88,12 @@ def train(model, loss_fn, optimizer, num_epochs = 1, logger = None, hold_out = -
           scores = model(x_var) 
           loss = loss_fn(scores, y_var)
           loss_total += loss.item()
+          print(f"Loss = {loss_total}")
           optimizer.zero_grad()
           loss.backward()
 
           optimizer.step()
+          print("Did back-propagation")
 
           if ((t+1) % 10) == 0:
             grad_magnitude = [(x.grad.data.sum(), torch.numel(x.grad.data)) for x in model.parameters() if x.grad.data.sum() != 0.0]
