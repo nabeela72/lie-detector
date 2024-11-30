@@ -214,7 +214,7 @@ def main():
   train_sampler, val_sampler = SubsetRandomSampler(train_idx), SubsetRandomSampler(val_idx)
   test_finetuning_sampler, test_holdout_sampler = SubsetRandomSampler(test_finetuning_idx), SubsetRandomSampler(test_holdout_idx)
 
-  train_loader = DataLoader(train_dataset, batch_size = config.batch_size, num_workers = 3, sampler = train_sampler)
+  train_loader = DataLoader(train_dataset, batch_size = config.batch_size, num_workers = 1, sampler = train_sampler)
   val_loader = DataLoader(train_dataset, batch_size = config.batch_size, num_workers = 1, sampler = val_sampler)
   test_loader_finetuning = DataLoader(test_dataset, batch_size = config.batch_size//2, num_workers = 1, sampler = test_finetuning_sampler)
   test_loader_holdout = DataLoader(test_dataset, batch_size = config.batch_size//2, num_workers = 1, sampler = test_holdout_sampler)
