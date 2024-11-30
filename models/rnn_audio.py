@@ -198,7 +198,7 @@ def main():
   #vocab, embeddings, embedding_dim = load_word_vectors('.', 'glove.6B', 100)
 
   # Model
-  model = ComplexAudioRNN_2(config, audio_dim = 34)
+  model = ComplexAudioRNN_2(config, audio_dim = 40)
   model.apply(initialize_weights)
   if config.use_gpu:
     model = model.cuda()
