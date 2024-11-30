@@ -91,7 +91,6 @@ def train(model, loss_fn, optimizer, num_epochs = 1, logger = None, hold_out = -
           loss.backward()
 
           optimizer.step()
-          print("Did back-propagation")
 
           if ((t+1) % 10) == 0:
             grad_magnitude = [(x.grad.data.sum(), torch.numel(x.grad.data)) for x in model.parameters() if x.grad.data.sum() != 0.0]
@@ -237,6 +236,9 @@ def main():
 
   #test on the held out speaker
   eval_on_test_set(best_model, loss_fn, config.finetuning_epochs, logger = logger, hold_out = -1)
+
+  torch.save(best_model.state_dict(), "model_weights.pth")
+
 
 
   
